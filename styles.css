@@ -1061,3 +1061,62 @@ textarea {
   object-fit: contain !important; /* Muestra la imagen completa sin recortar los bordes */
   object-position: center !important; /* Centra el contenido perfectamente */
 }
+/* 1. OPTIMIZACIÓN GLOBAL DE LOS BOTONES DE SOLUCIONES */
+.solution button {
+    width: 100%;
+    border: 0;
+    border-top: 1px solid var(--line);
+    background: none;
+    padding: 16px 0; /* Un poco más de aire vertical para tocar fácil con el dedo */
+    text-align: left;
+    font: 500 14px Poppins, sans-serif; /* Tipografía más equilibrada */
+    color: #3c4643;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: color 0.2s ease;
+}
+
+/* 2. NUEVO ICONO MINIMALISTA (Reemplaza las flechas feas) */
+.solution button::after {
+    content: "+"; /* Un signo más elegante, o podés usar "→" si preferís flecha derecha */
+    font-size: 18px;
+    font-weight: 300;
+    color: var(--accent);
+    display: inline-block;
+    transition: transform 0.2s ease, color 0.2s ease;
+    line-height: 1;
+}
+
+/* Efecto sutil al pasar el mouse (en PC) */
+.solution button:hover::after {
+    transform: scale(1.15);
+    color: var(--dark);
+}
+
+
+/* 3. MEJORAS EXCLUSIVAS PARA NAVEGACIÓN EN CELULARES */
+@media(max-width:800px) {
+    /* Ajustamos el contenedor de soluciones para que no quede tan pegado a los bordes */
+    .solutions {
+        grid-template-columns: 1fr;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        margin-bottom: 30px;
+    }
+
+    .solution {
+        padding: 24px 8px !important; /* Más compacto hacia los costados en pantallas chicas */
+    }
+
+    .solution h3 {
+        font-size: 18px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .solution button {
+        padding: 14px 4px !important; /* Altura perfecta para clicks táctiles sin romper el diseño */
+        font-size: 13.5px !important;
+    }
+}
