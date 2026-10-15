@@ -1249,3 +1249,59 @@ footer {
     stroke: #0eb4ca !important;
     transform: scale(1.1);
 }
+/* ==========================================================================
+   RED DISEÑO DE LA LÍNEA DE TIEMPO (PROCESO) PARA CELULARES
+   ========================================================================== */
+@media(max-width:800px) {
+    
+    /* Contenedor principal: le damos una alineación estricta a la izquierda */
+    .process {
+        grid-template-columns: 1fr !important; /* Mantiene uno abajo del otro */
+        gap: 32px !important; /* Espaciado perfecto y elegante entre cada paso */
+        padding: 0 10px !important;
+        margin: 40px 0 !important;
+        position: relative !important;
+    }
+
+    /* Cada ítem de la lista se alinea horizontalmente (Círculo - Texto) */
+    .process li {
+        display: flex !important;
+        align-items: center !important;
+        text-align: left !important; /* El texto ahora se lee de izquierda a derecha de forma natural */
+        gap: 20px !important; /* Espacio delicado entre el círculo numérico y la palabra */
+        position: relative !important;
+        width: 100% !important;
+        font-size: 15px !important; /* Tipografía más legible y estilizada */
+        font-weight: 500 !important;
+        color: var(--ink) !important;
+    }
+
+    /* Forzamos a que el círculo numérico mantenga su forma perfecta sin aplastarse */
+    .process b {
+        margin: 0 !important; /* Quita el centrado viejo */
+        flex-shrink: 0 !important; /* Evita que el círculo se vuelva un óvalo en pantallas chicas */
+        width: 40px !important; /* Un cachito más grande para que sea súper premium */
+        height: 40px !important;
+        font-size: 14px !important;
+        font-weight: 600 !important;
+        box-shadow: 0 4px 12px rgba(14, 180, 202, 0.15); /* Destello sutil alrededor del número */
+    }
+
+    /* CREACIÓN DE LA LÍNEA VERTICAL CONECTOR (El hilo conductor) */
+    .process li:not(:last-child)::after {
+        content: "" !important;
+        display: block !important; /* ACTIVADO EN CELULARES */
+        position: absolute !important;
+        
+        /* Posicionamiento milimétrico justo debajo del centro del círculo */
+        left: 20px !important; /* Mitad exacta de los 40px del círculo */
+        top: 40px !important;  /* Empieza justo donde termina el círculo */
+        
+        /* Dimensiones y estética de la línea */
+        width: 2px !important; /* Grosor fino y delicado */
+        height: 34px !important; /* Largo que une perfectamente con el paso de abajo */
+        background-color: var(--accent) !important; /* El hermoso celeste de VILAB (#0eb4ca) */
+        opacity: 0.4 !important; /* Tono sutil para que no compita visualmente con el texto */
+        z-index: 0 !important;
+    }
+}
