@@ -1120,3 +1120,132 @@ textarea {
         font-size: 13.5px !important;
     }
 }
+/* ESTILO PARA EL ENLACE CON LOGO DE INSTAGRAM */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* Separa de forma delicada el logo del texto */
+  color: inherit;
+  transition: color 0.25s ease;
+  vertical-align: middle;
+}
+
+.social-link:hover {
+  color: #0eb4ca !important; /* Cambia al color celeste de VILAB al pasar el cursor */
+}
+
+.instagram-icon {
+  width: 20px;   /* Tamaño ideal y sutil para celulares */
+  height: 20px;
+  transition: transform 0.25s ease;
+}
+
+.social-link:hover .instagram-icon {
+  transform: scale(1.1); /* Hace que el logo crezca un poquito al tocarlo */
+}
+/* 1. REEQUILIBRIO DEL PIE DE PÁGINA (Alineación más abierta y centrada) */
+.footer {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Mantiene los extremos pero balanceados */
+    gap: 40px !important;            /* Evita que los elementos se encimen en pantallas medianas */
+}
+
+/* Forzamos a que la lista de enlaces flote con más aire hacia la izquierda */
+.footer > div:first-of-type {
+    display: flex;
+    gap: 32px !important;           /* Separación interna generosa entre VILAB, SOLUCIONES, PROCESO e INSTAGRAM */
+    margin-right: auto;             /* Empuja los enlaces hacia la izquierda, despegándolos del copyright */
+    margin-left: 20px;              /* Separa el bloque de menús del logo principal */
+}
+
+/* 2. CAMBIO DE COLOR AL AZUL ACORDE A LA PÁGINA */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent) !important; /* Cambia el color gris/blanco por el celeste vivo de VILAB (#0eb4ca) */
+    transition: all 0.25s ease;
+    font-weight: 500;
+}
+
+/* Si preferís el azul oscuro profundo de la sección Próximamente, usá este cambio de hover */
+.social-link:hover {
+    color: #0b1b3d !important;      /* Al pasar el cursor o presionar, cambia al azul noche elegante */
+    transform: translateY(-1px);
+}
+
+.instagram-icon {
+    width: 20px;
+    height: 20px;
+    stroke: var(--accent) !important; /* Aplica el color azul/celeste directamente a las líneas del icono */
+    transition: transform 0.25s ease;
+}
+
+.social-link:hover .instagram-icon {
+    stroke: #0b1b3d !important;      /* El icono también acompaña el cambio de color en el hover */
+    transform: scale(1.1);
+}
+.footer{
+    background-color: #0b1b3d;
+}
+/* 1. SECCIÓN COMPLETA DEL PIE DE PÁGINA (Fondo azul unificado de punta a punta) */
+footer {
+    background-color: #0b1b3d !important; /* El azul oscuro elegante de tu página */
+    width: 100% !important;
+}
+
+/* 2. CONTENEDOR INTERNO DEL FOOTER */
+.footer {
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px !important;
+    background: transparent !important; /* Quitamos cualquier fondo duplicado */
+}
+
+/* Distribución y espaciado de los menús */
+.footer > div:first-of-type {
+    display: flex;
+    gap: 32px !important;
+    margin-right: auto;
+    margin-left: 40px; /* Separación respecto al logo */
+}
+
+/* Forzamos a que todos los textos estáticos del footer sean legibles sobre el azul */
+.copyright, 
+.footer,
+.brand-name {
+    color: #ffffff99 !important; /* Blanco sutil para el copyright y textos secundarios */
+}
+
+/* 3. LOGO Y TEXTO DE INSTAGRAM EN BLANCO INTEGRADO */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffffffdf !important; /* Blanco limpio para que combine con el resto del menú */
+    transition: all 0.25s ease;
+    font-weight: 500;
+}
+
+/* El icono de Instagram ahora toma el mismo color blanco */
+.instagram-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #ffffffdf !important; 
+    transition: transform 0.25s ease;
+}
+
+/* EFECTO HOVER: Cuando pasan el mouse o tocan, brilla en el celeste de la marca */
+.social-link:hover {
+    color: #0eb4ca !important; 
+    transform: translateY(-1px);
+}
+
+.social-link:hover .instagram-icon {
+    stroke: #0eb4ca !important;
+    transform: scale(1.1);
+}
