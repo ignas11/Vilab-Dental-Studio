@@ -1,3 +1,4 @@
+// 1. Efecto visual del Header al hacer scroll
 const header = document.querySelector('.header');
 const menuButton = document.querySelector('.menu-button');
 const nav = document.querySelector('.nav');
@@ -5,6 +6,7 @@ const nav = document.querySelector('.nav');
 addEventListener('scroll', () => header.classList.toggle('scrolled', scrollY > 12), { passive: true });
 header.classList.toggle('scrolled', scrollY > 12);
 
+// 2. Menú desplegable para Celulares
 menuButton?.addEventListener('click', () => {
   const open = nav.classList.toggle('open');
   menuButton.setAttribute('aria-expanded', open);
@@ -13,11 +15,13 @@ nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => 
   nav.classList.remove('open'); menuButton?.setAttribute('aria-expanded', 'false');
 }));
 
+// 3. Animaciones de revelado al bajar por la página
 const observer = new IntersectionObserver(entries => entries.forEach(entry => {
   if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); }
 }), { threshold: .12 });
 document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
 
+// 4. Datos y control del Modal de Trabajos / Soluciones
 const works = {
   'Coronas de zirconio': 'Restauraciones de alta resistencia y excelente estética, diseñadas digitalmente para una integración precisa en cada caso.',
   'Coronas de disilicato': 'Restauraciones estéticas de disilicato, pensadas para lograr naturalidad, translucidez y un ajuste confiable.',
@@ -36,7 +40,6 @@ const workDescription = document.querySelector('#work-description');
 const workImage = document.querySelector('#work-image');
 let selectedWork = '';
 
-// 1. Listado de imágenes correspondientes a cada uno de los 10 trabajos
 const imagenesTrabajos = {
   'Coronas de zirconio': 'Fotos/coronas-zirconio.jpeg',
   'Coronas de disilicato': 'Fotos/coronas-disilicato.jpeg',
@@ -50,14 +53,12 @@ const imagenesTrabajos = {
   'Protectores bucales': 'Fotos/protectores.jpeg'
 };
 
-// 2. Evento modificado para cargar la foto
 document.querySelectorAll('.solution button').forEach(button => button.addEventListener('click', () => {
   const savedScrollY = window.scrollY;
   selectedWork = button.dataset.work;
   workTitle.textContent = selectedWork;
   workDescription.textContent = works[selectedWork];
   
-  // ACÁ ASIGNAMOS TU FOTO REAL DINÁMICAMENTE
   if (imagenesTrabajos[selectedWork]) {
     workImage.src = imagenesTrabajos[selectedWork];
     workImage.style.display = 'block'; 
@@ -80,6 +81,7 @@ document.querySelector('#work-cta')?.addEventListener('click', () => {
   closeWorkModal();
 });
 
+// 5. Envío Inteligente del Formulario (PC directo a Web, Celular directo a App)
 document.querySelector('#case-form')?.addEventListener('submit', event => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -87,14 +89,14 @@ document.querySelector('#case-form')?.addEventListener('submit', event => {
   const values = Object.fromEntries(new FormData(form));
   const message = `Hola, quiero enviar un caso a VILAB.\n\nNombre: ${values.nombre}\nMatrícula: ${values.matricula}\nWhatsApp: ${values.whatsapp}\nEmail: ${values.email}\nTipo de trabajo: ${values.tipo}\nMensaje: ${values.mensaje || '-'}`;
   
-  // 1. Detectamos si es un dispositivo móvil (celular o tablet)
   const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
   
   if (isMobile) {
-    // En celular usamos wa.me directo para abrir la app nativa sin rodeos
+    // En el celular se mantiene wa.me que dispara la app directo
     window.location.href = `https://wa.me{encodeURIComponent(message)}`;
   } else {
-    // En la compu usamos window.open con la API web para saltarnos esa pantalla intermedia
+    // En la compu usamos la API oficial que te muestra la pantalla de tu captura con el texto listo
     window.open(`https://whatsapp.com{encodeURIComponent(message)}`, '_blank', 'noopener');
   }
 });
+
