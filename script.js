@@ -81,7 +81,7 @@ document.querySelector('#work-cta')?.addEventListener('click', () => {
   closeWorkModal();
 });
 
-// 5. Envío Inteligente del Formulario (PC directo a Web, Celular directo a App)
+// 5. Envío del Formulario corregido para usar la API oficial universal
 document.querySelector('#case-form')?.addEventListener('submit', event => {
   event.preventDefault();
   const form = event.currentTarget;
@@ -89,14 +89,7 @@ document.querySelector('#case-form')?.addEventListener('submit', event => {
   const values = Object.fromEntries(new FormData(form));
   const message = `Hola, quiero enviar un caso a VILAB.\n\nNombre: ${values.nombre}\nMatrícula: ${values.matricula}\nWhatsApp: ${values.whatsapp}\nEmail: ${values.email}\nTipo de trabajo: ${values.tipo}\nMensaje: ${values.mensaje || '-'}`;
   
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  
-  if (isMobile) {
-    // En el celular se mantiene wa.me que dispara la app directo
-    window.location.href = `https://wa.me{encodeURIComponent(message)}`;
-  } else {
-    // En la compu usamos la API oficial que te muestra la pantalla de tu captura con el texto listo
-    window.open(`https://whatsapp.com{encodeURIComponent(message)}`, '_blank', 'noopener');
-  }
+  // wa.me abre la aplicación en móvil y WhatsApp Web o Desktop en computadora.
+  const whatsappUrl = `https://wa.me/5493813333555?text=${encodeURIComponent(message)}`;
+  window.open(whatsappUrl, '_blank', 'noopener');
 });
-
