@@ -86,5 +86,15 @@ document.querySelector('#case-form')?.addEventListener('submit', event => {
   if (!form.reportValidity()) return;
   const values = Object.fromEntries(new FormData(form));
   const message = `Hola, quiero enviar un caso a VILAB.\n\nNombre: ${values.nombre}\nMatrícula: ${values.matricula}\nWhatsApp: ${values.whatsapp}\nEmail: ${values.email}\nTipo de trabajo: ${values.tipo}\nMensaje: ${values.mensaje || '-'}`;
-  window.open(`https://wa.me/5493813333555?text=${encodeURIComponent(message)}`, '_blank', 'noopener');
+  
+  // 1. Detectamos si es un dispositivo móvil (celular o tablet)
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // En celular usamos wa.me directo para abrir la app nativa sin rodeos
+    window.location.href = `https://wa.me{encodeURIComponent(message)}`;
+  } else {
+    // En la compu usamos window.open con la API web para saltarnos esa pantalla intermedia
+    window.open(`https://whatsapp.com{encodeURIComponent(message)}`, '_blank', 'noopener');
+  }
 });

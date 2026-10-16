@@ -1305,3 +1305,32 @@ footer {
         z-index: 0 !important;
     }
 }
+/* FONDO CON IMAGEN DIFUMINADA PARA EL HERO */
+.hero {
+  position: relative;
+  background: #fff !important; /* Base blanca */
+  overflow: hidden;
+}
+
+/* Creamos una capa trasera para la imagen para que no afecte la nitidez del texto */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('Fotos/laboratorio-fondo.jpg'); /* Poné acá la ruta exacta de tu foto */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  
+  /* Filtro de difuminado y opacidad suave */
+  filter: blur(6px); 
+  opacity: 0.25; /* Controlá qué tan visible es (0.1 mínimo - 0.4 máximo) */
+  
+  z-index: 0;
+}
+
+/* Forzamos a que el contenido de texto quede siempre por encima del fondo */
+.hero-grid, .hero-centered-grid {
+  position: relative;
+  z-index: 1;
+}
