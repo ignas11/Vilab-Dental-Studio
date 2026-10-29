@@ -25,6 +25,8 @@ document.querySelectorAll('.reveal').forEach(element => observer.observe(element
 const works = {
   'Coronas de zirconio': 'Restauraciones de alta resistencia y excelente estética, diseñadas digitalmente para una integración precisa en cada caso.',
   'Coronas de disilicato': 'Restauraciones estéticas de disilicato, pensadas para lograr naturalidad, translucidez y un ajuste confiable.',
+  'Carillas de disilicato': 'Una solución estética de alta precisión, combinando translucidez, naturalidad y resistencia.',
+  'Provisorios impresos en 3D': 'Ofrecen precisión, adaptación y estética durante la etapa provisional del tratamiento.',
   'Incrustaciones de zirconio': 'Soluciones conservadoras de zirconio, planificadas para devolver función y resistencia al remanente dentario.',
   'Incrustaciones de disilicato': 'Incrustaciones estéticas de disilicato para restauraciones conservadoras y de alta precisión.',
   'Encerados diagnósticos': 'Una herramienta visual y clínica para anticipar el resultado del tratamiento y ordenar la planificación.',
@@ -43,6 +45,8 @@ let selectedWork = '';
 const imagenesTrabajos = {
   'Coronas de zirconio': 'Fotos/coronas-zirconio.jpeg',
   'Coronas de disilicato': 'Fotos/coronas-disilicato.jpeg',
+  'Carillas de disilicato': 'Fotos/carillas-disilicato.jpeg',
+  'Provisorios impresos en 3D': 'Fotos/provisorios-3d.jpeg',
   'Incrustaciones de zirconio': 'Fotos/incrustaciones-zirconio.jpeg',
   'Incrustaciones de disilicato': 'Fotos/incrustaciones-disilicato.jpeg',
   'Encerados diagnósticos': 'Fotos/encerados.jpeg',
